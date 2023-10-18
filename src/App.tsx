@@ -1,5 +1,5 @@
 import './App.css'
-import VideoGrid from './VideoGrid';
+import VideoGrid from './components/VideoGrid';
 
 
 
