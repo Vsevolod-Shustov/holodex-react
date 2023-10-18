@@ -17,7 +17,7 @@ const HOLODEX_API_KEY = import.meta.env.VITE_HOLODEX_API_KEY
 
 async function getLive() {
   try {
-    const response = await fetch("https://holodex.net/api/v2/videos?status=live&max_upcoming_hours=24&org=Hololive", {
+    const response = await fetch("https://holodex.net/api/v2/live?org=Hololive", {
       headers: {
         "X-APIKEY": HOLODEX_API_KEY
       }
