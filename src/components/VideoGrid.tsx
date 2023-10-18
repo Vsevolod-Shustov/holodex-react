@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
 import VideoCard from "./VideoCard";
 
+type Video = {
+  id: string,
+  title: string,
+  type:string,
+  topic_id: string,
+  published_at: string,
+  available_at: string,
+  duration: number,
+  status: string,
+  channel: object
+}
+
 const HOLODEX_API_KEY = import.meta.env.VITE_HOLODEX_API_KEY
 
 async function getLive() {
@@ -18,15 +30,8 @@ async function getLive() {
   }
 }
 
-function buildVideoGrid(videos: Array<Object>) {
-    return videos.map((video) => {
-        <VideoCard></VideoCard>
-    })
-}
-
 export default function VideoGrid() {
-    const [videos, setVideos] = useState<Array<Object>>()
-    const [videosArray, setVideosArray] = useState(null)
+    const [videos, setVideos] = useState<Array<Video>>()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -43,7 +48,7 @@ export default function VideoGrid() {
 
     return (
     <>
-        {videos?.map((video) => <VideoCard video={video}></VideoCard>)}
+        {videos?.map((video) => <VideoCard key={video.id} video={video}></VideoCard>)}
     </>
     )
 }
