@@ -1,4 +1,7 @@
+import { useMemo } from "react"
+
 export default function VideoCard(props: any) {
+    const channelImg = useMemo(() => props.video.channel.photo.replace("=s800", "=s50"), [props.video.channel.photo])
 
     return(
         <div className="relative">
@@ -12,7 +15,7 @@ export default function VideoCard(props: any) {
                 ></img>
                 <img
                 className="absolute top-2 left-2 rounded-full"
-                src={`https://holodex.net/statics/channelImg/${props.video.channel.id}/50.png`}
+                src={channelImg}
                 ></img>
             </a>
             
