@@ -19,9 +19,13 @@ export default function VideoCard(props: any) {
                         src={`http://img.youtube.com/vi/${props.video.id}/maxresdefault.jpg`}
                         ></img>
                         <div
-                        className="video-topic absolute top-1 left-1 rounded-sm bg-black bg-opacity-75 text-white text-sm px-1 py-px">
+                        className="video-topic absolute top-1 left-1 rounded-sm bg-black bg-opacity-80 text-white text-sm px-1 py-px">
                             {props.video.topic_id}
                         </div>
+                        
+                            {props.video.status === "live" ? <div
+                        className="video-live absolute bottom-1 right-1 rounded-sm bg-red-800 bg-opacity-80 text-white text-sm px-1 py-px">Live</div> : ""}
+                        
                     </a>
                 </div>
 
