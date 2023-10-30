@@ -1,5 +1,5 @@
 import './App.css'
-import VideoGrid from './components/VideoGrid';
+import Home from './components/Home';
 
 
 
@@ -7,7 +7,7 @@ function App() {
   
   return (
     <>
-      <VideoGrid></VideoGrid>
+      <Home></Home>
     </>
   )
 }
