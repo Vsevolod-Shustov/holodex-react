@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { Suspense } from "react";
+import { atom, useAtom } from 'jotai'
 import VideoCard from "./VideoCard";
 
 type Video = {
@@ -15,7 +16,7 @@ type Video = {
 
 const HOLODEX_API_KEY = import.meta.env.VITE_HOLODEX_API_KEY
 
-async function getLive() {
+const liveData = atom(async () => {
   try {
     const response = await fetch("https://holodex.net/api/v2/live?org=Hololive", {
       headers: {
@@ -23,32 +24,22 @@ async function getLive() {
       }
     });
     const live = await response.json();
-    //console.log(live);
+    console.log(live);
     return live;
   } catch (error) {
     console.log(error)
   }
-}
+})
 
 export default function VideoGrid() {
-    const [videos, setVideos] = useState<Array<Video>>()
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await getLive()
-            setVideos(data)
-            //buildVideoGrid(videos)
-            //console.log(data)
-        }
-
-        fetchData()
-      },[])
-    
-    useEffect(() => {}, [])
+    const [videos] = useAtom(liveData)
 
     return (
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {videos?.map((video) => <VideoCard key={video.id} video={video}></VideoCard>)}
-      </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {videos?.map((video: Video) => <VideoCard key={video.id} video={video}></VideoCard>)}
+          test
+        </div>
+      </Suspense>
     )
 }
