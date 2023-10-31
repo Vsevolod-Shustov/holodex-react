@@ -1,6 +1,7 @@
 import { Suspense } from "react";
-import { atom, useAtom } from 'jotai'
+import { useAtom } from 'jotai'
 import VideoCard from "./VideoCard";
+import { liveData } from "./Home";
 
 type Video = {
   id: string,
@@ -13,23 +14,6 @@ type Video = {
   status: string,
   channel: object
 }
-
-const HOLODEX_API_KEY = import.meta.env.VITE_HOLODEX_API_KEY
-
-const liveData = atom(async () => {
-  try {
-    const response = await fetch("https://holodex.net/api/v2/live?org=Hololive", {
-      headers: {
-        "X-APIKEY": HOLODEX_API_KEY
-      }
-    });
-    const live = await response.json();
-    console.log(live);
-    return live;
-  } catch (error) {
-    console.log(error)
-  }
-})
 
 export default function VideoGrid() {
     const [videos] = useAtom(liveData)
