@@ -7,14 +7,14 @@ export default function VideoCard(props: any) {
     const [startsIn, setStartsIn] = useState("")
 
     useEffect(() => {
-        if(props.video.status === "live") {
+        if(props.video.status === "live" && props.video.start_actual) {
             const start_actual = Date.parse(props.video.start_actual)
             const now = Date.now()
             const live_duration = now - start_actual
             const dateObj = new Date(live_duration)
             const duration_string = dateObj.toISOString().substring(11, 19)
             setLiveDuration(duration_string)
-        } else if(props.video.status === "upcoming") {
+        } else if(props.video.status === "upcoming" && props.video.start_scheduled) {
             const start_scheduled = Date.parse(props.video.start_scheduled)
             const now = Date.now()
             const starts_in = start_scheduled - now
