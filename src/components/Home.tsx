@@ -20,12 +20,12 @@ export const liveData = atom(async () => {
 })
 
 function Home() {
-  
-    return (
-      <>
-        <VideoGrid></VideoGrid>
-      </>
-    )
-  }
-  
-  export default Home
+
+  return (
+    <>
+      <VideoGrid></VideoGrid>
+    </>
+  )
+}
+
+export default Home
