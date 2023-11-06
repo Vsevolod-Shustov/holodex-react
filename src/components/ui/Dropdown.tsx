@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 
-function Dropdown() {
+function Dropdown({ children }: any) {
   const container = useRef<any>();
   const [dropdownState, setDropdownState] = useState({ open: false });
 
@@ -28,13 +28,8 @@ function Dropdown() {
         Click me!
       </button>
       {dropdownState.open && (
-        <div className="absolute z-50 bg-sky-500">
-          <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
-          </ul>
+        <div className="absolute z-50">
+          {children}
         </div>
       )}
     </div>
