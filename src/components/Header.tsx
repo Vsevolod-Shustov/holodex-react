@@ -1,12 +1,10 @@
 import Dropdown from "./ui/Dropdown"
 
 const items = [
-  { title: "Item 1" },
-  { title: "Item 2" },
-  { title: "Item 3" },
-  { title: "Item 4" },
-  { title: "a" },
-  { title: "Lorem ipsum dolor sit amet" },
+  { title: "All Vtubers" },
+  { title: "Independents" },
+  { title: "Hololive" },
+  { title: "Nijisanji" },
 ]
 
 function Header() {

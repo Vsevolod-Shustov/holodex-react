@@ -4,9 +4,16 @@ import VideoGrid from './VideoGrid';
 
 const HOLODEX_API_KEY = import.meta.env.VITE_HOLODEX_API_KEY
 
-export const liveData = atom(async () => {
+export const apiUrl = atom("https://holodex.net/api/v2/live")
+
+export const queryOrg = atom<string>("Hololive")
+
+export const liveData = atom(async (get) => {
   try {
-    const response = await fetch("https://holodex.net/api/v2/live?org=Hololive", {
+    let fetchUrl = new URL(get(apiUrl))
+    const org = get(queryOrg)
+    if (org !== "All") { fetchUrl.searchParams.append("org", org) }
+    const response = await fetch(fetchUrl, {
       headers: {
         "X-APIKEY": HOLODEX_API_KEY
       }
