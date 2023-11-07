@@ -1,6 +1,7 @@
 import { atom } from 'jotai';
 
 import VideoGrid from './VideoGrid';
+import { Suspense } from 'react';
 
 const HOLODEX_API_KEY = import.meta.env.VITE_HOLODEX_API_KEY
 
@@ -13,6 +14,7 @@ export const liveData = atom(async (get) => {
     let fetchUrl = new URL(get(apiUrl))
     const org = get(queryOrg)
     if (org !== "All") { fetchUrl.searchParams.append("org", org) }
+    console.log(fetchUrl);
     const response = await fetch(fetchUrl, {
       headers: {
         "X-APIKEY": HOLODEX_API_KEY
@@ -30,7 +32,9 @@ function Home() {
 
   return (
     <>
-      <VideoGrid></VideoGrid>
+      <Suspense fallback={<div>Loading...</div>}>
+        <VideoGrid></VideoGrid>
+      </Suspense>
     </>
   )
 }

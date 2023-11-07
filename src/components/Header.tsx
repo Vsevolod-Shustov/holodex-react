@@ -1,21 +1,30 @@
+import { useAtom } from "jotai"
 import Dropdown from "./ui/Dropdown"
+import { queryOrg } from "./Home"
 
 const items = [
-  { title: "All Vtubers" },
-  { title: "Independents" },
-  { title: "Hololive" },
-  { title: "Nijisanji" },
+  { title: "All Vtubers", value: "All" },
+  { title: "Independents", value: "Independents" },
+  { title: "Hololive", value: "Hololive" },
+  { title: "Nijisanji", value: "Nijisanji" },
 ]
 
-function Header() {
 
+
+function Header() {
+  const [org, setOrg] = useAtom(queryOrg)
   return (
     <div className="Header flex px-4 py-1 bg-sky-500">
-      here be header
+      here be header {org}
       <Dropdown>
         <div className="rounded bg-slate-900 py-1 w-max">
           <ul>
-            {items.map((item) => (<li className="hover:bg-slate-500 py-1 px-4 ">{item.title}</li>))}
+            {items.map((item) => (
+              <li className="hover:bg-slate-500 py-1 px-4 "
+                onClick={() => { console.log(item.value); setOrg(item.value) }}
+              >
+                {item.title}
+              </li>))}
           </ul>
         </div>
       </Dropdown>
