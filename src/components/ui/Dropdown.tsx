@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 
-function Dropdown({ children }: any) {
+function Dropdown({ children, ...props }: any) {
   const container = useRef<any>();
   const [dropdownState, setDropdownState] = useState({ open: false });
 
@@ -25,7 +25,7 @@ function Dropdown({ children }: any) {
         className=""
         onClick={handleDropdownClick}
       >
-        Click me!
+        {props?.title}
       </button>
       {dropdownState.open && (
         <div className="absolute z-50">

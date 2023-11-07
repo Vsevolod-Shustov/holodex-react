@@ -32,7 +32,7 @@ function Home() {
 
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div className='text-center'>Loading...</div>}>
         <VideoGrid></VideoGrid>
       </Suspense>
     </>

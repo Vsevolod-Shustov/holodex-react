@@ -15,12 +15,11 @@ function Header() {
   const [org, setOrg] = useAtom(queryOrg)
   return (
     <div className="Header flex px-4 py-1 bg-sky-500">
-      here be header {org}
-      <Dropdown>
+      <Dropdown title={org}>
         <div className="rounded bg-slate-900 py-1 w-max">
           <ul>
             {items.map((item) => (
-              <li className="hover:bg-slate-500 py-1 px-4 "
+              <li className="hover:bg-slate-500 py-1 px-4 cursor-pointer"
                 onClick={() => { console.log(item.value); setOrg(item.value) }}
               >
                 {item.title}
