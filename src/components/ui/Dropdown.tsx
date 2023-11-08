@@ -27,6 +27,7 @@ function Dropdown({ children, ...props }: any) {
       >
         {props?.title}
       </button>
+      <span className={`ml-1 text-xl leading-6 inline-block transition-transform duration-300 ${dropdownState.open ? 'rotate-180' : ''}`}>{`\u25BE`}</span>
       {dropdownState.open && (
         <div className="absolute z-50">
           {children}
