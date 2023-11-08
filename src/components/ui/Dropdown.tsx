@@ -4,8 +4,15 @@ function Dropdown({ children, ...props }: any) {
   const container = useRef<any>();
   const [dropdownState, setDropdownState] = useState({ open: false });
 
-  const handleDropdownClick = () =>
-    setDropdownState({ open: !dropdownState.open });
+  const handleDropdownButtonClick = () => {
+    setDropdownState({ open: !dropdownState.open })
+  };
+
+  const handleDropdownChildrenClick = () => {
+    if (props.closeOnInsideClick === true) {
+      setDropdownState({ open: false });
+    }
+  }
 
   const handleClickOutside = (e: MouseEvent) => {
     if (container.current && !container.current.contains(e.target)) {
@@ -23,13 +30,13 @@ function Dropdown({ children, ...props }: any) {
       <button
         type="button"
         className=""
-        onClick={handleDropdownClick}
+        onClick={handleDropdownButtonClick}
       >
         {props?.title || "Click me"}
       </button>
       <span className={`ml-1 text-xl leading-6 inline-block transition-transform duration-300 ${dropdownState.open ? 'rotate-180' : ''}`}>{`\u25BE`}</span>
       {dropdownState.open && (
-        <div className="absolute z-50">
+        <div className="absolute z-50" onClick={handleDropdownChildrenClick}>
           {children}
         </div>
       )}
