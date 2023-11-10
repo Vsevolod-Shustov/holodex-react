@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react"
+import { Link } from "react-router-dom"
 
 export default function VideoCard(props: any) {
     const channelImg = useMemo(() => props.video.channel.photo.replace("=s800", "=s48"), [props.video.channel.photo])
@@ -7,14 +8,14 @@ export default function VideoCard(props: any) {
     const [startsIn, setStartsIn] = useState("")
 
     useEffect(() => {
-        if(props.video.status === "live" && props.video.start_actual) {
+        if (props.video.status === "live" && props.video.start_actual) {
             const start_actual = Date.parse(props.video.start_actual)
             const now = Date.now()
             const live_duration = now - start_actual
             const dateObj = new Date(live_duration)
             const duration_string = dateObj.toISOString().substring(11, 19)
             setLiveDuration(duration_string)
-        } else if(props.video.status === "upcoming" && props.video.start_scheduled) {
+        } else if (props.video.status === "upcoming" && props.video.start_scheduled) {
             const start_scheduled = Date.parse(props.video.start_scheduled)
             const now = Date.now()
             const starts_in = start_scheduled - now
@@ -23,62 +24,62 @@ export default function VideoCard(props: any) {
             setStartsIn(starts_in_string)
         }
     }, [])
-    
 
-    return(
+
+    return (
         <div
-        className="video-card relative">
+            className="video-card relative">
             <div>
                 <div
-                className="video-thumbnail relative">
+                    className="video-thumbnail relative">
                     <a
-                    className="block"
-                    href={`https://youtu.be/${props.video.id}`}
-                    target="_blank"
+                        className="block"
+                        href={`https://youtu.be/${props.video.id}`}
+                        target="_blank"
                     >
                         <img
-                        className="rounded"
-                        src={`http://img.youtube.com/vi/${props.video.id}/maxresdefault.jpg`}
+                            className="rounded"
+                            src={`http://img.youtube.com/vi/${props.video.id}/maxresdefault.jpg`}
                         ></img>
                         <div
-                        className="video-topic absolute top-1 left-1 rounded-sm bg-black bg-opacity-80 text-white text-sm px-1 py-px">
+                            className="video-topic absolute top-1 left-1 rounded-sm bg-black bg-opacity-80 text-white text-sm px-1 py-px">
                             {props.video.topic_id}
                         </div>
-                        
-                            {props.video.status === "live" ? <div
-                        className="video-live absolute bottom-1 right-1 rounded-sm bg-red-800 bg-opacity-80 text-white text-sm px-1 py-px">{liveDuration}</div> : ""}
-                        
+
+                        {props.video.status === "live" ? <div
+                            className="video-live absolute bottom-1 right-1 rounded-sm bg-red-800 bg-opacity-80 text-white text-sm px-1 py-px">{liveDuration}</div> : ""}
+
                     </a>
                 </div>
 
                 <div className="video-text flex mt-2">
                     <div className="flex-none p-2">
                         <img
-                        className="rounded-full w-12 h-12"
-                        src={channelImg}
+                            className="rounded-full w-12 h-12"
+                            src={channelImg}
                         ></img>
                     </div>
                     <div>
                         <div className="max-h-10 leading-5 line-clamp-2">
-                            {props.video.title}
+                            <Link to={`watch/${props.video.id}`}>{props.video.title}</Link>
                         </div>
                         <div>
                             <a
-                            className="text-blue-400"
-                            target="_blank"
-                            href={`https://www.youtube.com/channel/${props.video.channel.id}`}>
+                                className="text-blue-400"
+                                target="_blank"
+                                href={`https://www.youtube.com/channel/${props.video.channel.id}`}>
                                 {props.video.channel.english_name}
                             </a>
                         </div>
                         <div>
-                        {props.video.status === "live" ?
-                        <span><span className="text-red-500">Live Now</span> • {props.video.live_viewers} watching</span> : 
-                        <span>Starts in {startsIn}</span>}
+                            {props.video.status === "live" ?
+                                <span><span className="text-red-500">Live Now</span> • {props.video.live_viewers} watching</span> :
+                                <span>Starts in {startsIn}</span>}
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     )
 }
