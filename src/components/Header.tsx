@@ -14,7 +14,7 @@ const items = [
 function Header() {
   const [org, setOrg] = useAtom(queryOrg)
   return (
-    <header className="flex px-4 py-1 bg-sky-500">
+    <header className="flex h-[35px] px-4 py-1 bg-sky-500">
       <Dropdown title={org} closeOnInsideClick={true}>
         <div className="rounded bg-slate-900 py-1 w-max">
           <ul>
