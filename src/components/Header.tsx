@@ -19,7 +19,9 @@ function Header() {
         <div className="rounded bg-slate-900 py-1 w-max">
           <ul>
             {items.map((item) => (
-              <li className="hover:bg-slate-500 py-1 px-4 cursor-pointer"
+              <li
+                key={item.value}
+                className="hover:bg-slate-500 py-1 px-4 cursor-pointer"
                 onClick={() => { console.log(item.value); setOrg(item.value) }}
               >
                 {item.title}
