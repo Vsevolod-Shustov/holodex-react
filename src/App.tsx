@@ -1,18 +1,33 @@
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import './App.css'
-import Header from './components/Header';
-import Home from './components/Home';
+import Root from './routes/root.tsx';
+import Index from "./routes/index";
+import ErrorPage from "./error-page";
+import Watch from './components/Watch.tsx';
 
-function App() {
-  return (
-    <div className='app dark'>
-      <div className='styles-wrapper dark:bg-slate-900 dark:text-slate-100'>
-        <Header></Header>
-        <div className='content p-4 '>
-          <Home></Home>
-        </div>
-      </div>
-    </div>
-  )
-}
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <Index /> },
+      {
+        path: "watch/:id",
+        element: <Watch />,
+      },
+    ],
+  },
 
-export default App
+]);
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>,
+)
