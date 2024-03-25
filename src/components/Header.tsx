@@ -6,7 +6,7 @@ const items = [
   { title: "All Vtubers", value: "All" },
   { title: "Independents", value: "Independents" },
   { title: "Hololive", value: "Hololive" },
-  { title: "Nijisanji", value: "Nijisanji" },
+  { title: "Phase Connect", value: "Phase Connect" },
 ]
 
 
