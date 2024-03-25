@@ -7,9 +7,9 @@ export default function Root() {
     <div className='app dark'>
       <div className='styles-wrapper dark:bg-slate-900 dark:text-slate-100'>
         <Header></Header>
-        <div className='content'>
+        <main>
           <Outlet></Outlet>
-        </div>
+        </main>
       </div>
     </div>
   );
