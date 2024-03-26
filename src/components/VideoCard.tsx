@@ -39,7 +39,21 @@ export default function VideoCard(props: any) {
                     >
                         <img
                             className="rounded"
-                            src={`http://img.youtube.com/vi/${props.video.id}/maxresdefault.jpg`}
+                            width="1280"
+                            height="720"
+                            sizes="
+                            (min-width: 640px) 50vw,
+                            (min-width: 1024px) 33vw,
+                            (min-width: 1280px) 25vw,
+                            100vw
+                            "
+                            srcSet={`
+                            https://i.ytimg.com/vi/${props.video.id}/default.jpg 120w,
+                            https://i.ytimg.com/vi/${props.video.id}/mqdefault.jpg 320w,
+                            https://i.ytimg.com/vi/${props.video.id}/maxresdefault.jpg 1280w
+                            `}
+                            src={`https://i.ytimg.com/vi/${props.video.id}/maxresdefault.jpg`}
+                            alt="video thumbnail"
                         ></img>
                         <div
                             className="video-topic absolute top-1 left-1 rounded-sm bg-black bg-opacity-80 text-white text-sm px-1 py-px">
