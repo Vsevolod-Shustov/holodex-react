@@ -9,6 +9,7 @@ import Root from './routes/root.tsx';
 import Index from "./routes/index";
 import ErrorPage from "./error-page";
 import Watch from './components/Watch.tsx';
+import { BASE_PATH } from './constants';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
   },
 
 ],
-  { basename: "/holodex-react/" });
+  { basename: BASE_PATH });
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
