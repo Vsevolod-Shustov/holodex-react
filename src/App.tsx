@@ -24,7 +24,8 @@ const router = createBrowserRouter([
     ],
   },
 
-]);
+],
+  { basename: "/holodex-react/" });
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
