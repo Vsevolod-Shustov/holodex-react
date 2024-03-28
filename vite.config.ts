@@ -7,7 +7,7 @@ import { BASE_PATH } from './src/constants'
 export default defineConfig({
   base: BASE_PATH,
   plugins: [
-    react({ plugins: [["@swc-jotai/react-refresh", {}]] }),
+    react(),
     VitePWA({
       registerType: 'autoUpdate',
       devOptions: {
