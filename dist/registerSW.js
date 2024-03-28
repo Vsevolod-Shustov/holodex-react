@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/holodex-react/sw.js', { scope: '/holodex-react/' })})}
