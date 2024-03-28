@@ -1,1 +1,1 @@
-{"name":"holodex-react","short_name":"holodex-react","start_url":"/holodex-react/","display":"standalone","background_color":"#ffffff","lang":"en","scope":"/holodex-react/"}
+{"name":"holodex-react","short_name":"holodex-react","start_url":"/holodex-react/","display":"standalone","background_color":"#ffffff","lang":"en","scope":"/holodex-react/","theme_color":"#ffffff","icons":[{"src":"./icon.png","sizes":"512x512","type":"image/png"}]}
