@@ -22,6 +22,52 @@ export default defineConfig({
             type: 'image/png'
           }
         ]
+      },
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/holodex\.net\/api\/v2\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'holodex-live-json-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            urlPattern: /^https:\/\/i\.ytimg\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'youtube-video-thumbnail-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            urlPattern: /^https:\/\/yt3\.ggpht\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'youtube-channel-icon-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          }
+        ]
       }
     })
   ],
