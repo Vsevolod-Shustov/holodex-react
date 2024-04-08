@@ -45,7 +45,7 @@ export default defineConfig({
             options: {
               cacheName: 'youtube-video-thumbnail-cache',
               expiration: {
-                maxEntries: 10,
+                maxEntries: 1000,
                 maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
               },
               cacheableResponse: {
@@ -59,7 +59,7 @@ export default defineConfig({
             options: {
               cacheName: 'youtube-channel-icon-cache',
               expiration: {
-                maxEntries: 10,
+                maxEntries: 1000,
                 maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
               },
               cacheableResponse: {
