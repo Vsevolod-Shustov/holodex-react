@@ -27,7 +27,7 @@ export default defineConfig({
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/holodex\.net\/api\/v2\/.*/i,
-            handler: 'CacheFirst',
+            handler: 'NetworkFirst',
             options: {
               cacheName: 'holodex-live-json-cache',
               expiration: {
