@@ -1,6 +1,6 @@
 import { useAtom } from "jotai"
 import Dropdown from "./ui/Dropdown"
-import { queryOrg } from "./Home"
+import { queryOrg } from "../App"
 
 const items = [
   { title: "All Vtubers", value: "All" },

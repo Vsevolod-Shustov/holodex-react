@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai'
 import VideoCard from "./VideoCard";
 import { useLiveData } from "../hooks/useLiveData";
-import { queryOrg } from "./Home";
+import { queryOrg } from '../App';
 import { Video } from "../types/video";
 
 export default function VideoGrid() {

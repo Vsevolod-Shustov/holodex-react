@@ -10,6 +10,9 @@ import Index from "./routes/index";
 import ErrorPage from "./error-page";
 import Watch from './components/Watch.tsx';
 import { BASE_PATH } from './constants';
+import { atom } from 'jotai';
+
+export const queryOrg = atom<string>("Hololive")
 
 const router = createBrowserRouter([
   {
